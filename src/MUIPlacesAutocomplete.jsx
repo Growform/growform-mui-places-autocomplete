@@ -10,7 +10,6 @@ import { Manager, Target, Popper } from 'react-popper'
 import match from 'autosuggest-highlight/match'
 import parse from 'autosuggest-highlight/parse'
 
-import googleLogo from './images/google-logo-on-white-bg.png'
 
 export default class MUIPlacesAutocomplete extends React.Component {
   // Renders the container that will hold the suggestions and defers to other methods to render the
@@ -86,9 +85,57 @@ export default class MUIPlacesAutocomplete extends React.Component {
                   {renderedSuggestions}
                   {renderedSuggestions.length > 0
                       ? (
-                        <div style={{ display: 'flex' }}>
-                          <span style={{ flex: 1 }} />
-                          <img src={googleLogo} alt="" />
+                        <div
+                          style={{
+                            display: 'flex',
+                            alignItems: 'center',
+                            justifyContent: 'flex-end',
+                            height: '26px',
+                            paddingRight: '10px',
+                            paddingBottom: '1px',
+                            fontSize: '11px',
+                            color: '#999',
+                            gap: '5px',
+                          }}
+                        >
+                          powered by
+                          <a
+                            href="https://www.growform.co"
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            style={{
+                              display: 'flex',
+                              alignItems: 'center',
+                              textDecoration: 'none',
+                              cursor: 'pointer',
+                            }}
+                            onMouseEnter={(e) => {
+                              const img = e.currentTarget.querySelector('img')
+                              if (img) {
+                                img.style.filter = 'none'
+                                img.style.opacity = '1'
+                              }
+                            }}
+                            onMouseLeave={(e) => {
+                              const img = e.currentTarget.querySelector('img')
+                              if (img) {
+                                img.style.filter = 'grayscale(100%)'
+                                img.style.opacity = '0.6'
+                              }
+                            }}
+                          >
+                            <img
+                              src="https://res.cloudinary.com/dqnjggegp/image/upload/v1710754925/growform-production/growform-logo.png"
+                              alt="Growform"
+                              style={{
+                                height: '7px',
+                                width: 'auto',
+                                filter: 'grayscale(100%)',
+                                opacity: 0.6,
+                                transition: 'filter 0.15s, opacity 0.15s',
+                              }}
+                            />
+                          </a>
                         </div>
                         )
                       : null}
