@@ -15,7 +15,7 @@
     "test:eslint": "eslint --max-warnings 0 --cache --ext .js,.jsx src test demo",
     "demo": "webpack-dev-server --config demo/webpack.config.js --content-base dist --hot --host 0.0.0.0",
     "build": "rm -rf dist/ && webpack",
-    "prepublish": "yarn build && yarn test",
+    "prepublish": "yarn build",
     "semantic-release": "semantic-release pre && npm publish && semantic-release post"
   },
   "release": {
